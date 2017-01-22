@@ -5,7 +5,6 @@ Students should use this [rubric](https://review.udacity.com/#!/projects/2696458
 
 For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
 
-<a href="http://waffle.io/czeise/frontend-nanodegree-arcade-game" target="_blank">![Stories in Backlog](https://badge.waffle.io/czeise/frontend-nanodegree-arcade-game.svg?label=backlog&title=Backlog)</a>
-<a href="http://waffle.io/czeise/frontend-nanodegree-arcade-game" target="_blank">![Stories in Ready](https://badge.waffle.io/czeise/frontend-nanodegree-arcade-game.svg?label=ready&title=Ready)</a>
-<a href="http://waffle.io/czeise/frontend-nanodegree-arcade-game" target="_blank">![Stories in In Progress](https://badge.waffle.io/czeise/frontend-nanodegree-arcade-game.svg?label=in%20progress&title=In%20Progress)</a>
-<a href="http://waffle.io/czeise/frontend-nanodegree-arcade-game" target="_blank">![Stories in Done](https://badge.waffle.io/czeise/frontend-nanodegree-arcade-game.svg?label=label=done&title=Done)</a>
+## Issue Status
+[![Stories in Ready](https://badge.waffle.io/czeise/frontend-nanodegree-arcade-game.svg?label=ready&title=Ready)](http://waffle.io/czeise/frontend-nanodegree-arcade-game) [![Stories in In Progress](https://badge.waffle.io/czeise/frontend-nanodegree-arcade-game.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/czeise/frontend-nanodegree-arcade-game) [![Stories in Done](https://badge.waffle.io/czeise/frontend-nanodegree-arcade-game.svg?label=done&title=Done)](http://waffle.io/czeise/frontend-nanodegree-arcade-game)
+[![Throughput Graph](https://graphs.waffle.io/czeise/frontend-nanodegree-arcade-game/throughput.svg)](https://waffle.io/czeise/frontend-nanodegree-arcade-game/metrics/throughput)
