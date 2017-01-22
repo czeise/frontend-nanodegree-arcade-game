@@ -7,4 +7,5 @@ For detailed instructions on how to get started, check out this [guide](https://
 
 ## Issue Status
 [![Stories in Ready](https://badge.waffle.io/czeise/frontend-nanodegree-arcade-game.svg?label=ready&title=Ready)](http://waffle.io/czeise/frontend-nanodegree-arcade-game) [![Stories in In Progress](https://badge.waffle.io/czeise/frontend-nanodegree-arcade-game.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/czeise/frontend-nanodegree-arcade-game) [![Stories in Done](https://badge.waffle.io/czeise/frontend-nanodegree-arcade-game.svg?label=done&title=Done)](http://waffle.io/czeise/frontend-nanodegree-arcade-game)
+
 [![Throughput Graph](https://graphs.waffle.io/czeise/frontend-nanodegree-arcade-game/throughput.svg)](https://waffle.io/czeise/frontend-nanodegree-arcade-game/metrics/throughput)
