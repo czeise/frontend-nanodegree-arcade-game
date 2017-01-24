@@ -6,6 +6,24 @@ var Enemy = function() {
   // The image/sprite for our enemies, this uses
   // a helper we've provided to easily load images
   this.sprite = 'images/enemy-bug.png';
+
+  // Setup the enemy!
+  this.start();
+};
+
+// Starts the enemy out initially or after it reaches the end of the board
+Enemy.prototype.start = function() {
+  // Offsetting the enemy by 101 pixels to start if off the canvas
+  this.x = -101;
+
+  // Randomly select the road row that the enemy shows up on
+  var row = Math.floor(Math.random() * 3 + 1);
+  // The rows are 83 pixels apart vertically, and offsetting the enemy by
+  // about 20 pixels seems to work well
+  this.y = row * 83 - 20;
+
+  // Randomly set the enemy's speed ...100 to 600 seems good right now...
+  this.speed = Math.floor(Math.random() * 500 + 100);
 };
 
 // Update the enemy's position, required method for game
@@ -14,6 +32,12 @@ Enemy.prototype.update = function(dt) {
   // You should multiply any movement by the dt parameter
   // which will ensure the game runs at the same speed for
   // all computers.
+  this.x += dt * this.speed;
+
+  // Restart the enemy after it leaves the page!
+  if (this.x > 5 * 101) {
+    this.start();
+  }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -43,7 +67,7 @@ Player.prototype.handleInput = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var allEnemies = [];
+var allEnemies = [new Enemy(), new Enemy(), new Enemy()];
 var player = new Player();
 
 // This listens for key presses and sends the keys to your
