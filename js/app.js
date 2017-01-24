@@ -1,3 +1,11 @@
+// I'm not sure how much value I'm getting out of this, but it seemed
+// appropriate to create a parent class containing the methods that were
+// the same between Enemy and Player...
+var Character = function() {};
+Character.prototype.render = function() {
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
 // Enemies our player must avoid
 var Enemy = function() {
   // Variables applied to each of our instances go here,
@@ -10,6 +18,8 @@ var Enemy = function() {
   // Setup the enemy!
   this.start();
 };
+Enemy.prototype = Object.create(Character.prototype);
+Enemy.prototype.constructor = Enemy;
 
 // Starts the enemy out initially or after it reaches the end of the board
 Enemy.prototype.start = function() {
@@ -40,23 +50,16 @@ Enemy.prototype.update = function(dt) {
   }
 };
 
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
   this.sprite = 'images/char-boy.png';
 };
+Player.prototype = Object.create(Character.prototype);
+Player.prototype.constructor = Player;
 
 Player.prototype.update = function(dt) {
-
-};
-
-Player.prototype.render = function() {
 
 };
 
