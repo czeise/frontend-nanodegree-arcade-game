@@ -55,16 +55,43 @@ Enemy.prototype.update = function(dt) {
 // a handleInput() method.
 var Player = function() {
   this.sprite = 'images/char-boy.png';
+  this.start();
 };
 Player.prototype = Object.create(Character.prototype);
 Player.prototype.constructor = Player;
 
-Player.prototype.update = function(dt) {
-
+Player.prototype.start = function() {
+  this.x = 202;
+  this.y = 5 * 83 - 13;
 };
 
-Player.prototype.handleInput = function() {
+Player.prototype.update = function(key) {
+  switch (key) {
+    case 'left':
+      if (this.x > 0) {
+        this.x -= 101;
+      }
+      break;
+    case 'up':
+      if (this.y > 0) {
+        this.y -= 83;
+      }
+      break;
+    case 'right':
+      if (this.x < 404) {
+        this.x += 101;
+      }
+      break;
+    case 'down':
+      if (this.y < 83 * 4) {
+        this.y += 83;
+      }
+      break;
+  }
+};
 
+Player.prototype.handleInput = function(key) {
+  this.update(key);
 };
 
 // Now instantiate your objects.
@@ -75,7 +102,8 @@ var player = new Player();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+// Updated to listen for 'keydown'...it was weird to use 'keyup'
+document.addEventListener('keydown', function(e) {
   var allowedKeys = {
     37: 'left',
     38: 'up',
