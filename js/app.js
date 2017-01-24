@@ -30,7 +30,7 @@ Enemy.prototype.start = function() {
   var row = Math.floor(Math.random() * 3 + 1);
   // The rows are 83 pixels apart vertically, and offsetting the enemy by
   // about 20 pixels seems to work well
-  this.y = row * 83 - 20;
+  this.y = row * 83 - 25;
 
   // Randomly set the enemy's speed ...100 to 600 seems good right now...
   this.speed = Math.floor(Math.random() * 500 + 100);
@@ -62,7 +62,7 @@ Player.prototype.constructor = Player;
 
 Player.prototype.start = function() {
   this.x = 202;
-  this.y = 5 * 83 - 13;
+  this.y = 5 * 83 - 25;
 };
 
 Player.prototype.update = function(key) {
@@ -73,8 +73,10 @@ Player.prototype.update = function(key) {
       }
       break;
     case 'up':
-      if (this.y > 0) {
+      if (this.y > 83) {
         this.y -= 83;
+      } else {
+        this.start();
       }
       break;
     case 'right':
