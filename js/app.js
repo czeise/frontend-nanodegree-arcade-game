@@ -48,6 +48,12 @@ Enemy.prototype.update = function(dt) {
   if (this.x > 5 * 101) {
     this.start();
   }
+
+  // Speed * dt seems significantly small enough that this collision
+  // detection seems to work
+  if (this.y == player.y && Math.abs(this.x - player.x) < 50) {
+    player.start();
+  };
 };
 
 // Now write your own player class
