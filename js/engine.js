@@ -97,6 +97,14 @@ var Engine = (function(global) {
     player.update();
   }
 
+  // Render the text overlay on the screen
+  // TODO: Figure out how I'm going to handle text overlays
+  function updateText(dt) {
+    // TODO:
+    //  - updateMenu();
+    //  - updateOverlay();
+  }
+
   /* This function initially draws the "game level", it will then call
    * the renderEntities function. Remember, this function is called every
    * game tick (or loop of the game engine) because that's how games work -
