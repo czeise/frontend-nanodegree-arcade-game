@@ -79,7 +79,11 @@ var Engine = (function(global) {
    * on the entities themselves within your app.js file).
    */
   function update(dt) {
-    updateEntities(dt);
+    if (game.state == 'paused') {
+      updateMenu(dt);
+    } else {
+      updateEntities(dt);
+    }
     // checkCollisions();
   }
 
@@ -94,12 +98,15 @@ var Engine = (function(global) {
     allEnemies.forEach(function(enemy) {
       enemy.update(dt);
     });
+
+    // TODO: I'm not actually using this, be sure to remove if I don't find a use for it
     player.update();
   }
 
   // Render the text overlay on the screen
-  // TODO: Figure out how I'm going to handle text overlays
-  function updateText(dt) {
+  // TODO: Figure out how I'm going to handle text overlays...
+  // I think this might end up like the player class, where all functionality is handled in app.js...remove if not used
+  function updateMenu(dt) {
     // TODO:
     //  - updateMenu();
     //  - updateOverlay();
@@ -145,6 +152,9 @@ var Engine = (function(global) {
     }
 
     renderEntities();
+    if (game.state == ('start' || 'pause')) {
+      renderMenu();
+    }
   }
 
   /* This function is called by the render function and is called on each game
@@ -160,6 +170,32 @@ var Engine = (function(global) {
     });
 
     player.render();
+  }
+
+  // Renders the menus when game is started/reset or paused
+  function renderMenu() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    renderMainMenu();
+    renderPauseMenu();
+  }
+
+  // Render the main menu content
+  function renderMainMenu() {
+    ctx.font = '64px cursive';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = 'white';
+    ctx.fillText('Title', canvas.width/2, 2 * 83);
+    selector.render();
+
+    for (var col = 0; col < 5; col++) {
+      ctx.drawImage(Resources.get(selector.charImages[col]), col * 101, 3 * 83 - 25);
+    }
+  }
+
+  // Render the pause menu content
+  function renderPauseMenu() {
+
   }
 
   /* This function does nothing but it could have been a good place to
@@ -179,7 +215,12 @@ var Engine = (function(global) {
     'images/water-block.png',
     'images/grass-block.png',
     'images/enemy-bug.png',
-    'images/char-boy.png'
+    'images/char-boy.png',
+    'images/char-cat-girl.png',
+    'images/char-horn-girl.png',
+    'images/char-pink-girl.png',
+    'images/char-princess-girl.png',
+    'images/Selector.png'
   ]);
   Resources.onReady(init);
 

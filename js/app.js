@@ -1,9 +1,72 @@
+var Game = function () {
+  this.start();
+};
+Game.prototype.start = function () {
+  this.state = 'start';
+};
+Game.prototype.update = function(key) {
+  switch (key) {
+    case 'enter':
+      this.state = 'running';
+      break;
+  }
+};
+Game.prototype.handleInput = function(key) {
+  if (game.state == 'start') {
+    this.update(key);
+  }
+};
+
+
 // I'm not sure how much value I'm getting out of this, but it seemed
 // appropriate to create a parent class containing the methods that were
-// the same between Enemy and Player...
-var Character = function() {};
-Character.prototype.render = function() {
+// the same between my renderable classes
+var Renderable = function() {};
+Renderable.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+// Character selector for the main menu
+var Selector = function() {
+  this.charImages = [
+    'images/char-boy.png',
+    'images/char-cat-girl.png',
+    'images/char-horn-girl.png',
+    'images/char-pink-girl.png',
+    'images/char-princess-girl.png'
+  ];
+  this.sprite = 'images/Selector.png';
+  this.start();
+};
+Selector.prototype = Object.create(Renderable.prototype);
+Selector.prototype.start = function() {
+  this.player = new Player();
+  this.selected = 0;
+  this.x = 0;
+  this.y = 3 * 83;
+};
+Selector.prototype.update = function(key) {
+  switch (key) {
+    case 'left':
+      if (this.x > 0) {
+        this.x -= 101;
+        this.selected -= 1;
+        player.sprite = this.charImages[this.selected];
+      }
+      break;
+    case 'right':
+      if (this.x < 404) {
+        this.x += 101;
+        this.selected += 1;
+        player.sprite = this.charImages[this.selected];
+      }
+      break;
+  }
+};
+Selector.prototype.handleInput = function(key) {
+  if (game.state == 'start') {
+    this.update(key);
+  }
 };
 
 // Enemies our player must avoid
@@ -18,7 +81,7 @@ var Enemy = function() {
   // Setup the enemy!
   this.start();
 };
-Enemy.prototype = Object.create(Character.prototype);
+Enemy.prototype = Object.create(Renderable.prototype);
 Enemy.prototype.constructor = Enemy;
 
 // Starts the enemy out initially or after it reaches the end of the board
@@ -63,7 +126,7 @@ var Player = function() {
   this.sprite = 'images/char-boy.png';
   this.start();
 };
-Player.prototype = Object.create(Character.prototype);
+Player.prototype = Object.create(Renderable.prototype);
 Player.prototype.constructor = Player;
 
 Player.prototype.start = function() {
@@ -99,12 +162,16 @@ Player.prototype.update = function(key) {
 };
 
 Player.prototype.handleInput = function(key) {
-  this.update(key);
+  if (game.state == 'running') {
+    this.update(key);
+  }
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+var game = new Game();
+var selector = new Selector();
 var allEnemies = [new Enemy(), new Enemy(), new Enemy()];
 var player = new Player();
 
@@ -116,8 +183,11 @@ document.addEventListener('keydown', function(e) {
     37: 'left',
     38: 'up',
     39: 'right',
-    40: 'down'
+    40: 'down',
+    13: 'enter'
   };
 
+  selector.handleInput(allowedKeys[e.keyCode]);
+  game.handleInput(allowedKeys[e.keyCode]);
   player.handleInput(allowedKeys[e.keyCode]);
 });
