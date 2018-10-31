@@ -1,8 +1,12 @@
 # Classic Arcade Game
-This classic arcade game, loosely based on [Frogger](https://en.wikipedia.org/wiki/Frogger), is part of the [Front-End Web Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001) from [Udacity](https://www.udacity.com/).
+This classic arcade game, loosely based on [Frogger](https://en.wikipedia.org/wiki/Frogger), is part
+of the
+[Front-End Web Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001)
+from [Udacity](https://www.udacity.com/).
 
 ## Playing the Game!
-Check out [the latest version of this game hosted here on GitHub Pages](https://czeise.github.io/frontend-nanodegree-arcade-game/).
+Check out
+[the latest version of this game hosted here on GitHub Pages](https://czeise.github.io/frontend-nanodegree-arcade-game/).
 - Move the player using the keyboard arrows
 - Don't hit the enemy bugs!
 - If you reach the water, you've won!
@@ -14,3 +18,8 @@ Check out [the latest version of this game hosted here on GitHub Pages](https://
 - Reaching the water results in "winning" and the player resets to the start
 - Player-enemy collisions result in "losing" and the player resets to the start
 - The player cannot move off the screen
+
+## Running the Game
+There aren't any special requirements to run the game. You can access the live version
+[here](https://czeise.github.io/frontend-nanodegree-arcade-game/), or you can clone this repo and
+open up [index.html](index.html) in your web browser.
